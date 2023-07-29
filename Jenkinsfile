@@ -27,13 +27,16 @@ pipeline {
 
         stage("Push to Registry") {
             steps{
-                sh "echo Pushing..."
+                script
+                    sh 'docker tag edorons/timeserver docker.io/edorons/efosaserver:$BUILD_ID'
+                    sh 'docker push docker.io/edorons/efosaserver:$BUILD_ID'
             }
         }
         
         stage("Cleanup") {
             steps{
-                sh "echo cleanup.."
+                sh 'docker rmi -f $(docker image ls -aq)'
+                sh 'docker logout'
             }
         }
     }
