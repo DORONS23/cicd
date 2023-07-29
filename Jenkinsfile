@@ -4,13 +4,13 @@ pipeline {
     stages {
         stage("Git Checkout") {
             steps{
-                sh "echo checking out..."
+                git branch: 'main', url: 'https://github.com/DORONS23/cicd.git'
             }
         }
 
-        stage("Build") {
+        stage("Docker Build") {
             steps{
-                sh "echo building"
+                sh "docker build -t edorons/timeserver ."
             }
         }
 
