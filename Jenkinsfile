@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS=credentials('edorons')
+        DOCKERHUB_CREDENTIALS=credentials('debbc0c7-01fe-40b9-8a54-48e2d6da52ce')
     }
 
     stages {
