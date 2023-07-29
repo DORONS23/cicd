@@ -27,9 +27,11 @@ pipeline {
 
         stage("Push to Registry") {
             steps{
-                script
+                script {
                     sh 'docker tag edorons/timeserver docker.io/edorons/efosaserver:$BUILD_ID'
                     sh 'docker push docker.io/edorons/efosaserver:$BUILD_ID'
+                }
+                    
             }
         }
         
